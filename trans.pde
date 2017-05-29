@@ -1,6 +1,5 @@
 // transparent method
-PGraphics makeTransparencyImage(PImage _graphics, int _x, int _y) {
-  color target = _graphics.get(_x, _y);
+PGraphics makeTransparencyImage(PImage _graphics, color target) {
   if (target == 0) return null;
   PGraphics _g = createGraphics(_graphics.width, _graphics.height, JAVA2D);
   _g.beginDraw();

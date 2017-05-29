@@ -11,13 +11,13 @@ void mousePressed() {
     PGraphics processed;
     switch(MODE) {
     case TRANS:
-      processed = makeTransparencyImage(graphics, mouseX, mouseY);
+      processed = makeTransparencyImage(graphics, get(mouseX, mouseY));
       if (processed == null) break;
       graphics = processed;
       history.add(graphics);
       break;
     case FLOOD_TRANS:
-      processed = makeFloodTransImage(graphics, int(mouseX-(WORK_WIDTH-graphics.width)/2), int(mouseY-(WORK_HEIGHT-graphics.height)/2));
+      processed = makeFloodTransImage(graphics, int((mouseX-(WORK_WIDTH-graphics.width*SCALE)*0.5) / SCALE), int((mouseY-(WORK_HEIGHT-graphics.height*SCALE)*0.5) / SCALE));
       if (processed == null) break;
       graphics = processed;
       history.add(graphics);

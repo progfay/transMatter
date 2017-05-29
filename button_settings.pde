@@ -25,12 +25,16 @@ void button_settings() {
   buttons[1].setBehave(new Behavior() {
     public void behave() {
       MODE = TRANS;
+      buttons[1].selected = true;
+      buttons[2].selected = false;
     }
   }
   );
   buttons[2].setBehave(new Behavior() {
     public void behave() {
       MODE = FLOOD_TRANS;
+      buttons[1].selected = false;
+      buttons[2].selected = true;
     }
   }
   );
@@ -51,12 +55,29 @@ void button_settings() {
   buttons[7].setBehave(new Behavior() {
     public void behave() {
       graphics = history.undo();
+      if(graphics.width == 0 || graphics.height == 0) return;
+      if (graphics.width > WORK_WIDTH) {
+        SCALE = WORK_WIDTH / graphics.width;
+        if (graphics.height > WORK_HEIGHT) SCALE = min(SCALE, WORK_HEIGHT / graphics.height);
+      } else if (graphics.width < WORK_WIDTH*0.5) {
+        SCALE = WORK_WIDTH/2 / graphics.width;
+        if (graphics.height < WORK_HEIGHT*0.5) SCALE = (WORK_HEIGHT*0.5) / graphics.height;
+      }
+      if (graphics.height > WORK_HEIGHT || graphics.height < WORK_HEIGHT*0.5) SCALE = (WORK_HEIGHT*0.5) / graphics.height;
     }
   }
   );
   buttons[8].setBehave(new Behavior() {
     public void behave() {
       graphics = history.redo();
+      if (graphics.width > WORK_WIDTH) {
+        SCALE = WORK_WIDTH*1.0 / graphics.width;
+        if (graphics.height > WORK_HEIGHT) SCALE = min(SCALE, WORK_HEIGHT*1.0 / graphics.height);
+      } else if (graphics.width < WORK_WIDTH*0.5) {
+        SCALE = WORK_WIDTH/2 / graphics.width;
+        if (graphics.height < WORK_HEIGHT*0.5) SCALE = min(SCALE, WORK_HEIGHT*0.5 / graphics.height);
+      }
+      if (graphics.height > WORK_HEIGHT || graphics.height < WORK_HEIGHT*0.5) SCALE = WORK_HEIGHT*0.5 / graphics.height;
     }
   }
   );

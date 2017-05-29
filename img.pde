@@ -12,17 +12,16 @@ void draw_img() {
     }
   }
   if (graphics.width <= 0 || graphics.height <=0) return;
-  image(graphics, WORK_WIDTH/2, WORK_HEIGHT/2, graphics.width, graphics.height);
-  // image(graphics, WORK_WIDTH/2, WORK_HEIGHT/2, 500, 500);  ← make like it(rescale drawing image to easy operation)
+  image(graphics, WORK_WIDTH/2, WORK_HEIGHT/2, graphics.width*SCALE, graphics.height*SCALE);
   noFill();
   stroke(0);
-  rect(WORK_WIDTH/2-graphics.width/2, WORK_HEIGHT/2-graphics.height/2, graphics.width, graphics.height);
+  rect(WORK_WIDTH*0.5-graphics.width*0.5*SCALE, WORK_HEIGHT*0.5-graphics.height*0.5*SCALE, graphics.width*SCALE, graphics.height*SCALE);
 }
 
 // return the mouse cursor on the image
 boolean on_img() {
-  return WORK_WIDTH/2-graphics.width/2 < mouseX
-    && mouseX < WORK_WIDTH/2+graphics.width/2
-    && WORK_HEIGHT/2-graphics.height/2 < mouseY
-    && mouseY < WORK_HEIGHT/2+graphics.height/2;
+  return WORK_WIDTH*0.5-graphics.width*0.5*SCALE < mouseX
+    && mouseX < WORK_WIDTH*0.5+graphics.width*0.5*SCALE
+    && WORK_HEIGHT*0.5-graphics.height*0.5*SCALE < mouseY
+    && mouseY < WORK_HEIGHT*0.5+graphics.height*0.5*SCALE;
 }
