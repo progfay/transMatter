@@ -1,0 +1,11 @@
+### https://raw.github.com/github/gitignore/df6a05e29979079fcb5d602b4dc260f34383eb92/processing.gitignore
+
+.DS_Store
+applet
+application.linux32
+application.linux64
+application.windows32
+application.windows64
+application.macosx
+
+
