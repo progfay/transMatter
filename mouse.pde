@@ -17,7 +17,9 @@ void mousePressed() {
       history.add(graphics);
       break;
     case FLOOD_TRANS:
-      processed = makeFloodTransImage(graphics, int((mouseX-(WORK_WIDTH-graphics.width*SCALE)*0.5) / SCALE), int((mouseY-(WORK_HEIGHT-graphics.height*SCALE)*0.5) / SCALE));
+      processed = makeFloodTransImage(graphics, 
+        int((mouseX-(WORK_WIDTH-graphics.width*SCALE)*0.5) / SCALE), 
+        int((mouseY-(WORK_HEIGHT-graphics.height*SCALE)*0.5) / SCALE));
       if (processed == null) break;
       graphics = processed;
       history.add(graphics);

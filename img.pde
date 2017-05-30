@@ -25,3 +25,15 @@ boolean on_img() {
     && WORK_HEIGHT*0.5-graphics.height*0.5*SCALE < mouseY
     && mouseY < WORK_HEIGHT*0.5+graphics.height*0.5*SCALE;
 }
+
+void setScale() {
+  if(graphics.width == 0 || graphics.height == 0) return;
+      if (graphics.width > WORK_WIDTH) {
+        SCALE = WORK_WIDTH / graphics.width;
+        if (graphics.height > WORK_HEIGHT) SCALE = min(SCALE, WORK_HEIGHT / graphics.height);
+      } else if (graphics.width < WORK_WIDTH*0.5) {
+        SCALE = WORK_WIDTH/2 / graphics.width;
+        if (graphics.height < WORK_HEIGHT*0.5) SCALE = (WORK_HEIGHT*0.5) / graphics.height;
+      }
+      if (graphics.height > WORK_HEIGHT || graphics.height < WORK_HEIGHT*0.5) SCALE = (WORK_HEIGHT*0.5) / graphics.height;
+}

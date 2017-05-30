@@ -1,4 +1,3 @@
-// issue : 許容値増減ボタンの追加(±10など)
 // issue : undo, redoに原因不明のバグ有り(履歴の順序が異なる等)
 
 void settings() {

@@ -8,9 +8,10 @@ final int TRANS          =   1;
 final int FLOOD_TRANS    =   2;
 
 PGraphics graphics;
-int MODE        =  0;
-int AFFORD_DIFF = 100;
-float SCALE       =  1;
+int MODE        = 0;
+float SCALE     = 1;
+float AFFORD_DIFF = 100;
+
 
 Button[] buttons;
 String[] button_name =
@@ -18,10 +19,15 @@ String[] button_name =
   "開く(O)", 
   "透過", 
   "塗りつぶし透過", 
-  "許容値", 
-  "-", 
-  String.valueOf(AFFORD_DIFF), 
-  "+", 
+  "許容値 " + String.valueOf(AFFORD_DIFF), 
+  "-0.1", 
+  "-1", 
+  "-5", 
+  "-10", 
+  "+0.1", 
+  "+1", 
+  "+5", 
+  "+10", 
   "戻る", 
   "進む", 
   "保存(S)"
