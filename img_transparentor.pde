@@ -21,6 +21,22 @@ void setup() {
 
 void draw() {
   draw_img();
+  if (MODE == ERASER && mouseX < WORK_WIDTH) {
+    fill(mousePressed ? 180 : 255);
+    stroke(0);
+    ellipse(mouseX, mouseY, ERASER_RADIUS*2, ERASER_RADIUS*2);
+  }
+  if (mousePressed && mouseX < WORK_WIDTH) {
+    switch(MODE) {
+    case ERASER:
+      graphics = ellipseEraserTransImage(graphics, tranlatePositionX(mouseX), tranlatePositionY(mouseY));
+      break;
+    case RECTANGLE:
+      noFill();
+      stroke(0);
+      rect(rectStartX, rectStartY, mouseX - rectStartX, mouseY - rectStartY);
+    }
+  }
   for (Button button : buttons) {
     button.draw();
   }
