@@ -20,7 +20,7 @@ void imgOpen(File selection) {
     if (img.height < WORK_HEIGHT*0.5) SCALE = (WORK_HEIGHT*0.5) / img.height;
   }
   if (img.height > WORK_HEIGHT || img.height < WORK_HEIGHT*0.5) SCALE = (WORK_HEIGHT*0.5) / img.height;
-  history.add(graphics);
+  history.save();
 }
 
 void imgSave(File selection) {

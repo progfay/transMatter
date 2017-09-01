@@ -3,15 +3,16 @@
 // draw the image with black edge
 void draw_img() {
   // draw the background like chess board before draw image
-  background(-1);
-  fill(230);
+  background(#FFFFFF);
+  fill(#DDDDDD);
   noStroke();
-  for (int i = 0; i <= WORK_WIDTH/BACK_RECT_SIZE; i++) {
-    for (int j = 0; j <= WORK_HEIGHT/BACK_RECT_SIZE; j++) {
-      if ((i+j)%2==0) rect(i*BACK_RECT_SIZE, j*BACK_RECT_SIZE, BACK_RECT_SIZE, BACK_RECT_SIZE);
+  int beginPos = - BACK_RECT_SIZE + frameCount % BACK_RECT_SIZE;
+  for (int i = beginPos; i <= WORK_WIDTH; i++) {
+    for (int j = beginPos; j <= WORK_HEIGHT/BACK_RECT_SIZE; j++) {
+      if ((i+j)%2==0) rect(beginPos+i*BACK_RECT_SIZE, beginPos+j*BACK_RECT_SIZE, BACK_RECT_SIZE, BACK_RECT_SIZE);
     }
   }
-  if (graphics.width <= 0 || graphics.height <=0) return;
+  if (graphics == null || graphics.width == 0 || graphics.height == 0) return;
   image(graphics, WORK_WIDTH/2, WORK_HEIGHT/2, graphics.width*SCALE, graphics.height*SCALE);
   noFill();
   stroke(0);
@@ -19,15 +20,15 @@ void draw_img() {
 }
 
 // return the mouse cursor on the image
-boolean on_img() {
-  return WORK_WIDTH*0.5-graphics.width*0.5*SCALE < mouseX
-    && mouseX < WORK_WIDTH*0.5+graphics.width*0.5*SCALE
-    && WORK_HEIGHT*0.5-graphics.height*0.5*SCALE < mouseY
-    && mouseY < WORK_HEIGHT*0.5+graphics.height*0.5*SCALE;
+boolean on_img(int x, int y) {
+  return WORK_WIDTH*0.5-graphics.width*0.5*SCALE < x
+    && x < WORK_WIDTH*0.5+graphics.width*0.5*SCALE
+    && WORK_HEIGHT*0.5-graphics.height*0.5*SCALE < y
+    && y < WORK_HEIGHT*0.5+graphics.height*0.5*SCALE;
 }
 
 void setScale() {
-  if(graphics.width == 0 || graphics.height == 0) return;
+  if(graphics == null || graphics.width == 0 || graphics.height == 0) return;
       if (graphics.width > WORK_WIDTH) {
         SCALE = WORK_WIDTH / graphics.width;
         if (graphics.height > WORK_HEIGHT) SCALE = min(SCALE, WORK_HEIGHT / graphics.height);

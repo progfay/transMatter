@@ -169,7 +169,7 @@ void button_settings() {
   buttons.put("undo", new Button("戻す", WORK_WIDTH, BUTTON_HEIGHT*4, UI_WIDTH/2, BUTTON_HEIGHT, bigFontSize, 
     new Behavior() {
     public void behave() {
-      graphics = history.undo();
+      history.undo();
       setScale();
     }
   }
@@ -179,7 +179,7 @@ void button_settings() {
   buttons.put("redo", new Button("進む", WORK_WIDTH+UI_WIDTH/2, BUTTON_HEIGHT*4, UI_WIDTH/2, BUTTON_HEIGHT, bigFontSize, 
     new Behavior() {
     public void behave() {
-      graphics = history.redo();
+      history.redo();
       setScale();
     }
   }

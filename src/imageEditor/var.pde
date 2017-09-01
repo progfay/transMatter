@@ -2,7 +2,7 @@ final int WORK_WIDTH     = 960;
 final int WORK_HEIGHT    = 720;
 final int UI_WIDTH       = 240;
 final int BUTTON_HEIGHT  = 120;
-final int BACK_RECT_SIZE =  10;
+final int BACK_RECT_SIZE =  12;
 
 final int ANOTHER        =   0;
 final int TRANS          =   1;
@@ -20,6 +20,9 @@ int   ERASER_RADIUS = 8;
 HashMap<String, Button> buttons;
 
 History history;
+
+// for BRUSH mode
+boolean isBrushed = false;
 
 // for RECTANGLE mode
 int rectStartX = -1;
