@@ -1,9 +1,10 @@
 // The instance of the Button can notice the bounds and behave when the button pressed
 class Button {
   int    posX, posY, width, height;
-  String   title          = "";
-  boolean anable          = true;
-  Behavior behavior       = new Behavior();
+  String   title    = "";
+  boolean anable    = true;
+  boolean selected  = false;
+  Behavior behavior = new Behavior();
 
   Button(int x, int y, int w, int h, String t) {
     this.posX   = x;
@@ -15,7 +16,7 @@ class Button {
 
   void draw() {
     stroke(0);
-    fill(this.bounds() ? 180 : 255);
+    fill(this.bounds() ? 180 : selected ? 235 : 255);
     rect(this.posX, this.posY, this.width, this. height);
     fill(0);
     text(this.title, this.posX, this.posY, this.width, this.height);
@@ -49,7 +50,6 @@ class Button {
 }
 
 // This class is setup behave on Button.
-// We can make it inner class this class.
 class Behavior {
   public void behave() {
   }

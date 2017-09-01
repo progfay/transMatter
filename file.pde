@@ -6,20 +6,15 @@ void imgLoad(File selection) {
   graphics.beginDraw();
   graphics.image(img, 0, 0);
   graphics.endDraw();
-  //if (graphics.width > WORK_WIDTH || graphics.height > WORK_HEIGHT) {
-  //  float per_width  = graphics.width *1.0/WORK_WIDTH;
-  //  float per_height = graphics.height*1.0/WORK_HEIGHT;
-  //  if (per_width > per_height) {
-  //    img_width = WORK_WIDTH;
-  //    img_height = graphics.height / per_height;
-  //  } else {
-  //    img_width  = graphics.width / per_height;
-  //    img_height = WORK_HEIGHT;
-  //  }
-  //} else {
-  //  img_width  = graphics.width;
-  //  img_height = graphics.height;
-  //}
+  // set scale by image size
+  if (img.width > WORK_WIDTH) {
+    SCALE = WORK_WIDTH / img.width;
+    if (img.height > WORK_HEIGHT) SCALE = min(SCALE, WORK_HEIGHT / img.height);
+  } else if (img.width < WORK_WIDTH*0.5) {
+    SCALE = WORK_WIDTH*0.5 / img.width;
+    if (img.height < WORK_HEIGHT*0.5) SCALE = (WORK_HEIGHT*0.5) / img.height;
+  }
+  if (img.height > WORK_HEIGHT || img.height < WORK_HEIGHT*0.5) SCALE = (WORK_HEIGHT*0.5) / img.height;
   history.add(graphics);
 }
 

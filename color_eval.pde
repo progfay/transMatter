@@ -1,8 +1,12 @@
-// evaluate the distance of two colors
+// evaluate the distance of two colors by Euclid distance on RGB
 boolean equals(color c1, color c2) {
-  // return (abs(red(c1)-red(c2)) + abs(green(c1)-green(c2)) + abs(blue(c1)-blue(c2)) + abs(alpha(c1)-alpha(c2))) <= AFFORD_DIFF;
-  return CIEDE2000(new Lab(c1), new Lab(c2)) <= AFFORD_DIFF;
+  return (abs(red(c1)-red(c2)) + abs(green(c1)-green(c2)) + abs(blue(c1)-blue(c2)) + abs(alpha(c1)-alpha(c2))) <= AFFORD_DIFF;
 }
+
+// evaluate the distance of two colors by CIEDE2000
+//boolean equals(color c1, color c2) {
+//  return CIEDE2000(new Lab(c1), new Lab(c2)) <= AFFORD_DIFF;
+//}
 
 // CIEDE2000 is one of measure of distance between two colors.
 float CIEDE2000(Lab lab1, Lab lab2) {
@@ -36,9 +40,7 @@ float CIEDE2000(Lab lab1, Lab lab2) {
 
 // Lab is one of color space.
 class Lab {
-  float L;
-  float a;
-  float b;
+  float L, a, b;
   
   Lab(color c) {
     float x_r = (0.412391*red(c) + 0.357584*green(c) + 0.180481*blue(c)) / 242.36629;
