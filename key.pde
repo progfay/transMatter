@@ -7,6 +7,7 @@ void keyPressed() {
       return;
     case 83 : // s
       buttons[16].pressed();
+      return;
     case 90 : // z
       if (this.keyEvent.isShiftDown()) {
         buttons[15].pressed();

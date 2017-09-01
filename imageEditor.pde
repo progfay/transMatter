@@ -1,4 +1,5 @@
-// issue : undo, redoに原因不明のバグ有り(履歴の順序が異なる等)
+// issue : 消しゴムと矩形選択での操作が反映されていない
+// issue : work_widthを超える画像を開くと表示されていない
 
 void settings() {
   // set the screen size
