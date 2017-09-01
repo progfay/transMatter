@@ -1,6 +1,6 @@
 // flood transparent method
 PGraphics makeFloodTransImage(PGraphics _graphics, int _x, int _y) {
-  if (_graphics == null) return null;
+  if (_graphics == null || _graphics.width == 0 || _graphics.height == 0) return null;
   color target = _graphics.get(_x, _y);
   if (target == 0) return null;
   ArrayList<Point> point_list = new ArrayList<Point>();

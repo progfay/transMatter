@@ -1,18 +1,13 @@
-// issue : 消しゴムと矩形選択での操作が反映されていない
-// issue : work_widthを超える画像を開くと表示されていない
-
 void settings() {
   // set the screen size
   size(WORK_WIDTH+UI_WIDTH, WORK_HEIGHT);
 }
 
 void setup() {
-  textFont(createFont("Ricty Discord", 48, false));
-  frameRate(-1);
+  textFont(createFont("HiraMaruProN-W4-AlphaNum", 30, true));
   textAlign(CENTER, CENTER);
   rectMode(CORNER);
   imageMode(CENTER);
-  textSize(30);
 
   // setup graphics, history and buttons
   graphics = createGraphics(0, 0, JAVA2D);
@@ -22,15 +17,15 @@ void setup() {
 
 void draw() {
   draw_img();
-  if (MODE == ERASER && mouseX < WORK_WIDTH) {
+  if (mode == BRUSH && mouseX < WORK_WIDTH) {
     fill(mousePressed ? 180 : 255);
     stroke(0);
     ellipse(mouseX, mouseY, ERASER_RADIUS*2, ERASER_RADIUS*2);
   }
   if (mousePressed && mouseX < WORK_WIDTH) {
-    switch(MODE) {
-    case ERASER:
-      graphics = ellipseEraserTransImage(graphics, tranlatePositionX(mouseX), tranlatePositionY(mouseY));
+    switch(mode) {
+    case BRUSH:
+      brushTransImage(graphics, tranlatePositionX(mouseX), tranlatePositionY(mouseY));
       break;
     case RECTANGLE:
       noFill();
@@ -38,7 +33,9 @@ void draw() {
       rect(rectStartX, rectStartY, mouseX - rectStartX, mouseY - rectStartY);
     }
   }
-  for (Button button : buttons) {
+
+
+  for (Button button : buttons.values()) {
     button.draw();
   }
 }

@@ -4,12 +4,14 @@ boolean equals(color c1, color c2) {
 }
 
 // evaluate the distance of two colors by CIEDE2000
-//boolean equals(color c1, color c2) {
+//@Deprecated
+//  boolean equals(color c1, color c2) {
 //  return CIEDE2000(new Lab(c1), new Lab(c2)) <= AFFORD_DIFF;
 //}
 
 // CIEDE2000 is one of measure of distance between two colors.
-float CIEDE2000(Lab lab1, Lab lab2) {
+@Deprecated
+  float CIEDE2000(Lab lab1, Lab lab2) {
   float sq_Lbar = sq((lab1.L + lab2.L) * 0.5 - 50);
   float rt_Cbar7 = sqrt(1.0 - pow(25, 7) / (pow((sqrt(sq(lab1.a)+sq(lab1.b))+sqrt(sq(lab2.a)+sq(lab2.b)))*0.5, 7) + pow(25, 7)));
   float ad1 = (3 + rt_Cbar7) * lab1.a * 0.5;
@@ -28,7 +30,7 @@ float CIEDE2000(Lab lab1, Lab lab2) {
     else                       Hbar_dash -= TWO_PI;
   }
   float dH_dash = 2 * sqrt(C1_dash*C2_dash) * sin(dh_dash*0.5);
-  if(C1_dash !=0 && C2_dash != 0) Hbar_dash *= 0.5;
+  if (C1_dash !=0 && C2_dash != 0) Hbar_dash *= 0.5;
   float C = (C2_dash - C1_dash) / (0.045+0.002025*Cbar_dash);
   float H = dH_dash / (0.015 + 0.000225*Cbar_dash*(1 - 0.17*cos(Hbar_dash-THIRD_PI*0.5) + 0.24*cos(2*Hbar_dash) + 0.32*cos(3*Hbar_dash+THIRD_PI*0.1) - 0.2*cos(4*Hbar_dash-HALF_PI*0.7)));
   return sqrt(
@@ -39,9 +41,10 @@ float CIEDE2000(Lab lab1, Lab lab2) {
 }
 
 // Lab is one of color space.
-class Lab {
+@Deprecated
+  class Lab {
   float L, a, b;
-  
+
   Lab(color c) {
     float x_r = (0.412391*red(c) + 0.357584*green(c) + 0.180481*blue(c)) / 242.36629;
     float y_r = (0.212639*red(c) + 0.715169*green(c) + 0.072192*blue(c)) / 255.00002;
@@ -58,5 +61,7 @@ class Lab {
 }
 
 // there are constant values that use in Lab constractor.
-final float EPSILON_Lab = 216.0 / 24389;
-final float k_lab       = 24389 / 27.0;
+@Deprecated
+  final float EPSILON_Lab = 216.0 / 24389;
+@Deprecated
+  final float k_lab       = 24389 / 27.0;

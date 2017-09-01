@@ -3,16 +3,16 @@ void keyPressed() {
     || (platform == WINDOWS && this.keyEvent.isControlDown())) {
     switch(keyCode) {
     case 79 : // o
-      buttons[0].pressed();
+      buttons.get("open").pressed();
       return;
     case 83 : // s
-      buttons[16].pressed();
+      buttons.get("save").pressed();
       return;
     case 90 : // z
       if (this.keyEvent.isShiftDown()) {
-        buttons[15].pressed();
+        buttons.get("redo").pressed();
       } else {
-        buttons[14].pressed();
+        buttons.get("undo").pressed();
       }
       return;
     }

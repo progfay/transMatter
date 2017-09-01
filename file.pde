@@ -1,6 +1,11 @@
 // load and save file methods
-void imgLoad(File selection) {
+void imgOpen(File selection) {
   if (selection == null) return;
+  String extension = getExtension(selection.getAbsolutePath());
+  if  (!extension.equals("png") && !extension.equals("jpg") && !extension.equals("jpeg")
+    && !extension.equals("gif") && !extension.equals("tif") && !extension.equals("tiff")
+    && !extension.equals("tga")) return;
+
   PImage img = loadImage(selection.getAbsolutePath());
   graphics = createGraphics(img.width, img.height, JAVA2D);
   graphics.beginDraw();
@@ -20,5 +25,10 @@ void imgLoad(File selection) {
 
 void imgSave(File selection) {
   if (graphics == null) return;
-  if (selection != null) graphics.save(selection.getAbsolutePath() + ".png");
+  if (selection != null) {
+    String path = selection.getAbsolutePath();
+    String extension = getExtension(path);
+    if  (!extension.equals("png") && !extension.equals("gif") && !extension.equals("tga")) path += ".png";
+    graphics.save(path);
+  }
 }

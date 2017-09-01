@@ -1,6 +1,6 @@
 void mousePressed() {
   // button is pressed
-  for (Button button : buttons) {
+  for (Button button : buttons.values()) {
     if (button.bounds()) {
       button.behavior.behave();
       return;
@@ -8,7 +8,7 @@ void mousePressed() {
   }
 
   // work spase is pressed
-  if (MODE == RECTANGLE) {
+  if (mode == RECTANGLE) {
     rectStartX = mouseX;
     rectStartY = mouseY;
     return;
@@ -17,7 +17,7 @@ void mousePressed() {
   // image is pressed
   if (on_img()) {
     PGraphics processed;
-    switch(MODE) {
+    switch(mode) {
     case TRANS:
       processed = makeTransparencyImage(graphics, get(mouseX, mouseY));
       if (processed == null) break;
@@ -37,13 +37,16 @@ void mousePressed() {
 }
 
 void mouseReleased() {
-  switch(MODE) {
+  switch(mode) {
+  case BRUSH:
+    if (graphics == null || graphics.width == 0 || graphics.height == 0) return;
+    history.add(graphics);
   case RECTANGLE:
-    if (rectStartX == -1 || rectStartX == -1) return;
+    if (rectStartX == -1 || rectStartY == -1) return;
     PGraphics processed = rectangleTransImage(graphics, tranlatePositionX(rectStartX), tranlatePositionY(rectStartY), tranlatePositionX(mouseX), tranlatePositionY(mouseY));
     if (processed == null) break;
-    graphics = processed;
     history.add(graphics);
+    graphics = processed;
     rectStartX = -1;
     rectStartX = -1;
     break;
