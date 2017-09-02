@@ -19,13 +19,14 @@ class History {
 
   void undo() {
     currentArg = max(0, this.currentArg-1);
-    println(currentArg);
     graphics = copy(this.historys.get(currentArg));
+    setScale();
   }
 
   void redo() {
     currentArg = min(this.historys.size()-1, this.currentArg+1);
     graphics = copy(this.historys.get(currentArg));
+    setScale();
   }
 }
 

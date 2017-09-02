@@ -1,7 +1,4 @@
-// issue : undo and redo bugs
-
 void settings() {
-  // set the screen size
   size(WORK_WIDTH+UI_WIDTH, WORK_HEIGHT);
 }
 
@@ -15,6 +12,9 @@ void setup() {
   graphics = null;
   history = new History(graphics);
   button_settings();
+  dropTaret_settings();
+  bucket_icon  = loadImage( "bucket.png");
+  syringe_icon = loadImage("syringe.png");
 }
 
 void draw() {
@@ -29,7 +29,7 @@ void draw() {
   case BRUSH:
     fill(mousePressed ? 180 : 255);
     stroke(0);
-    ellipse(mouseX, mouseY, ERASER_RADIUS*2, ERASER_RADIUS*2);
+    ellipse(mouseX, mouseY, BRUSH_RADIUS*2, BRUSH_RADIUS*2);
     if (graphics != null && mousePressed) brushTransImage(tranlatePositionX(mouseX), tranlatePositionY(mouseY));
     break;
   case RECTANGLE:

@@ -10,16 +10,20 @@ final int FLOOD_TRANS    =   2;
 final int BRUSH          =   3;
 final int RECTANGLE      =   4;
 
+PImage  bucket_icon;
+PImage syringe_icon;
+
 PGraphics graphics;
 int mode        = 0;
 float SCALE     = 1;
 
-float AFFORD_DIFF   = 100;
-int   ERASER_RADIUS = 8;
+float AFFORD_DIFF  = 100;
+int   BRUSH_RADIUS = 8;
 
 HashMap<String, Button> buttons;
-
-History history;
+History    history;
+JPanel     jPanel;
+DropTarget dropTarget;
 
 // for BRUSH mode
 boolean isBrushed = false;

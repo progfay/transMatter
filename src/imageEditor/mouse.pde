@@ -54,3 +54,50 @@ int tranlatePositionX(int originX) {
 int tranlatePositionY(int originY) {
   return int((originY-(WORK_HEIGHT-graphics.height*SCALE)*0.5) / SCALE);
 }
+
+void mouseMoved() {
+  if (mouseX > WORK_WIDTH && pmouseX <= WORK_WIDTH) cursor(ARROW);
+  else if (mouseX < WORK_WIDTH && pmouseX >= WORK_WIDTH) {
+    switch(mode) {
+    case TRANS:
+      cursor(syringe_icon, 0, syringe_icon.height-1);
+      break;
+    case FLOOD_TRANS:
+      cursor(bucket_icon, bucket_icon.width-1, bucket_icon.height-2);
+      break;
+    case BRUSH:
+      noCursor();
+      break;
+    case RECTANGLE:
+      cursor(CROSS);
+      break;
+    default: 
+      cursor(ARROW);
+      break;
+    }
+  }
+}
+
+void mouseEntered() {
+  if (mouseX > WORK_WIDTH) {
+    cursor(ARROW);
+    return;
+  }
+  switch(mode) {
+  case TRANS:
+    cursor(syringe_icon, 0, syringe_icon.height-1);
+    break;
+  case FLOOD_TRANS:
+    cursor(bucket_icon, bucket_icon.width-1, bucket_icon.height-2);
+    break;
+  case BRUSH:
+    noCursor();
+    break;
+  case RECTANGLE:
+    cursor(CROSS);
+    break;
+  default: 
+    cursor(ARROW);
+    break;
+  }
+}

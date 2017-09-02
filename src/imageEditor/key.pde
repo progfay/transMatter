@@ -4,17 +4,13 @@ void keyPressed() {
     switch(keyCode) {
     case 79 : // o
       buttons.get("open").pressed();
-      return;
+      break;
     case 83 : // s
       buttons.get("save").pressed();
-      return;
+      break;
     case 90 : // z
-      if (this.keyEvent.isShiftDown()) {
-        buttons.get("redo").pressed();
-      } else {
-        buttons.get("undo").pressed();
-      }
-      return;
+      buttons.get(!this.keyEvent.isShiftDown() ? "undo" : "redo").pressed();
+      break;
     }
   }
 }

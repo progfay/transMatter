@@ -1,25 +1,25 @@
 // load and save file methods
+
 void imgOpen(File selection) {
   if (selection == null) return;
-  String extension = getExtension(selection.getAbsolutePath());
+  imgOpen(selection.getAbsolutePath());
+}
+
+void imgOpen(String path) {
+  String extension = getExtension(path);
   if  (!extension.equals("png") && !extension.equals("jpg") && !extension.equals("jpeg")
     && !extension.equals("gif") && !extension.equals("tif") && !extension.equals("tiff")
-    && !extension.equals("tga")) return;
+    && !extension.equals("tga")) {
+    warningDialog("対応していないファイル形式です", "illigal extension file is selected");
+    return;
+  }
 
-  PImage img = loadImage(selection.getAbsolutePath());
+  PImage img = loadImage(path);
   graphics = createGraphics(img.width, img.height, JAVA2D);
   graphics.beginDraw();
   graphics.image(img, 0, 0);
   graphics.endDraw();
-  // set scale by image size
-  if (img.width > WORK_WIDTH) {
-    SCALE = WORK_WIDTH / img.width;
-    if (img.height > WORK_HEIGHT) SCALE = min(SCALE, WORK_HEIGHT / img.height);
-  } else if (img.width < WORK_WIDTH*0.5) {
-    SCALE = WORK_WIDTH*0.5 / img.width;
-    if (img.height < WORK_HEIGHT*0.5) SCALE = (WORK_HEIGHT*0.5) / img.height;
-  }
-  if (img.height > WORK_HEIGHT || img.height < WORK_HEIGHT*0.5) SCALE = (WORK_HEIGHT*0.5) / img.height;
+  setScale();
   history.save();
 }
 

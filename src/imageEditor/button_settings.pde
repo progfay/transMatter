@@ -22,7 +22,7 @@ void button_settings() {
   // fontSize valiables
   int bigFontSize   = 30;
   int smallFontSize = 20;
-  
+
   // button position and size settings
   buttons = new HashMap<String, Button>();
 
@@ -170,7 +170,6 @@ void button_settings() {
     new Behavior() {
     public void behave() {
       history.undo();
-      setScale();
     }
   }
   ));
@@ -180,7 +179,6 @@ void button_settings() {
     new Behavior() {
     public void behave() {
       history.redo();
-      setScale();
     }
   }
   ));
