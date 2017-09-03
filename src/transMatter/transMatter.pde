@@ -15,6 +15,10 @@ void setup() {
   dropTaret_settings();
   bucket_icon  = loadImage( "bucket.png");
   syringe_icon = loadImage("syringe.png");
+  java.awt.Dimension bucket_dim  = ((java.awt.Component)surface.getNative()).getToolkit().getBestCursorSize(bucket_icon.width, bucket_icon.height);
+  java.awt.Dimension syringe_dim = ((java.awt.Component)surface.getNative()).getToolkit().getBestCursorSize(syringe_icon.width, syringe_icon.height);
+  bucket_icon.resize(bucket_dim.width, bucket_dim.height);
+  syringe_icon.resize(syringe_dim.width, syringe_dim.height);
 }
 
 void draw() {
