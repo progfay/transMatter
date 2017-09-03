@@ -4,7 +4,7 @@
  button[flood] : "塗りつぶし透過"
  button[brush] : "ブラシ"
  button[ rect] : "矩形"
- button[param] : "許容値 " + String.valueOf(AFFORD_DIFF)
+ button[param] : "許容値 " + String.valueOf(afford_diff)
  button[ -0.1] : "-0.1"
  button[ -  1] : "-1"
  button[ -  5] : "-5"
@@ -88,7 +88,7 @@ void button_settings() {
   ));
 
   // param display area
-  buttons.put("param", new Button("許容値 "+String.valueOf(AFFORD_DIFF), WORK_WIDTH, BUTTON_HEIGHT * 3, UI_WIDTH, int(BUTTON_HEIGHT*0.4), bigFontSize, 
+  buttons.put("param", new Button("許容値 "+String.valueOf(afford_diff), WORK_WIDTH, BUTTON_HEIGHT * 3, UI_WIDTH, int(BUTTON_HEIGHT*0.4), bigFontSize, 
     new Behavior() {
     public void behave() {
     }
@@ -102,32 +102,32 @@ void button_settings() {
   buttons.put("-0.1", new Button("-0.1", WORK_WIDTH, int(3.4*BUTTON_HEIGHT), BUTTON_WIDTH, int(BUTTON_HEIGHT*0.3), smallFontSize, 
     new Behavior() {
     public void behave() {
-      AFFORD_DIFF = max(0.0f, AFFORD_DIFF-0.1);
-      buttons.get("param").setTitle("許容値 " + format(AFFORD_DIFF));
+      afford_diff = max(0.0f, afford_diff-0.1);
+      buttons.get("param").setTitle("許容値 " + format(afford_diff));
     }
   }
   ));
   buttons.put("-1", new Button("-1", WORK_WIDTH+BUTTON_WIDTH, int(3.4*BUTTON_HEIGHT), BUTTON_WIDTH, int(BUTTON_HEIGHT*0.3), smallFontSize, 
     new Behavior() {
     public void behave() {
-      AFFORD_DIFF = max(0.0f, AFFORD_DIFF-1);
-      buttons.get("param").setTitle("許容値 " + format(AFFORD_DIFF));
+      afford_diff = max(0.0f, afford_diff-1);
+      buttons.get("param").setTitle("許容値 " + format(afford_diff));
     }
   }
   ));
   buttons.put("-5", new Button("-5", WORK_WIDTH+BUTTON_WIDTH*2, int(3.4*BUTTON_HEIGHT), BUTTON_WIDTH, int(BUTTON_HEIGHT*0.3), smallFontSize, 
     new Behavior() {
     public void behave() {
-      AFFORD_DIFF = max(0.0f, AFFORD_DIFF-5);
-      buttons.get("param").setTitle("許容値 " + format(AFFORD_DIFF));
+      afford_diff = max(0.0f, afford_diff-5);
+      buttons.get("param").setTitle("許容値 " + format(afford_diff));
     }
   }
   ));
   buttons.put("-10", new Button("-10", WORK_WIDTH+BUTTON_WIDTH*3, int(3.4*BUTTON_HEIGHT), BUTTON_WIDTH, int(BUTTON_HEIGHT*0.3), smallFontSize, 
     new Behavior() {
     public void behave() {
-      AFFORD_DIFF = max(0.0f, AFFORD_DIFF-10);
-      buttons.get("param").setTitle("許容値 " + format(AFFORD_DIFF));
+      afford_diff = max(0.0f, afford_diff-10);
+      buttons.get("param").setTitle("許容値 " + format(afford_diff));
     }
   }
   ));
@@ -135,32 +135,32 @@ void button_settings() {
   buttons.put("+0.1", new Button("+0.1", WORK_WIDTH, int(3.7*BUTTON_HEIGHT), BUTTON_WIDTH, int(BUTTON_HEIGHT*0.3), smallFontSize, 
     new Behavior() {
     public void behave() {
-      AFFORD_DIFF = min(765.0f, AFFORD_DIFF+0.1);
-      buttons.get("param").setTitle("許容値 " + format(AFFORD_DIFF));
+      afford_diff = min(765.0f, afford_diff+0.1);
+      buttons.get("param").setTitle("許容値 " + format(afford_diff));
     }
   }
   ));
   buttons.put("+1", new Button("+1", WORK_WIDTH+BUTTON_WIDTH, int(3.7*BUTTON_HEIGHT), BUTTON_WIDTH, int(BUTTON_HEIGHT*0.3), smallFontSize, 
     new Behavior() {
     public void behave() {
-      AFFORD_DIFF = min(765.0f, AFFORD_DIFF+1);
-      buttons.get("param").setTitle("許容値 " + format(AFFORD_DIFF));
+      afford_diff = min(765.0f, afford_diff+1);
+      buttons.get("param").setTitle("許容値 " + format(afford_diff));
     }
   }
   ));
   buttons.put("+5", new Button("+5", WORK_WIDTH+BUTTON_WIDTH*2, int(3.7*BUTTON_HEIGHT), BUTTON_WIDTH, int(BUTTON_HEIGHT*0.3), smallFontSize, 
     new Behavior() {
     public void behave() {
-      AFFORD_DIFF = min(765.0f, AFFORD_DIFF+5);
-      buttons.get("param").setTitle("許容値 " + format(AFFORD_DIFF));
+      afford_diff = min(765.0f, afford_diff+5);
+      buttons.get("param").setTitle("許容値 " + format(afford_diff));
     }
   }
   ));
   buttons.put("+10", new Button("+10", WORK_WIDTH+BUTTON_WIDTH*3, int(3.7*BUTTON_HEIGHT), BUTTON_WIDTH, int(BUTTON_HEIGHT*0.3), smallFontSize, 
     new Behavior() {
     public void behave() {
-      AFFORD_DIFF = min(765.0f, AFFORD_DIFF+10);
-      buttons.get("param").setTitle("許容値 " + format(AFFORD_DIFF));
+      afford_diff = min(765.0f, afford_diff+10);
+      buttons.get("param").setTitle("許容値 " + format(afford_diff));
     }
   }
   ));

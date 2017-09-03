@@ -32,7 +32,7 @@ class History {
 
 // copy the PGraphics method
 PGraphics copy(PGraphics origin) {
-  if(origin == null) return null;
+  if (origin == null) return null;
   PGraphics copy = createGraphics(origin.width, origin.height, JAVA2D);
   copy.beginDraw();
   copy.loadPixels();

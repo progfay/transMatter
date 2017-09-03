@@ -20,8 +20,9 @@ class Button {
   }
 
   boolean bounds() {
-    return (available && this.posX <= mouseX && mouseX <= this.posX + this.width && 
-      this.posY <= mouseY && mouseY <= this.posY + this.height);
+    return (available && mouseEntered
+      && this.posX <= mouseX && mouseX <= this.posX + this.width
+      && this.posY <= mouseY && mouseY <= this.posY + this.height);
   }
 
   void draw() {
