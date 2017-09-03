@@ -19,7 +19,7 @@ void mousePressed() {
   if (on_img(mouseX, mouseY)) {
     switch(mode) {
     case TRANS:
-      makeTransparencyImage(get(mouseX, mouseY));
+      makeTransparencyImage(tranlatePositionX(mouseX), tranlatePositionY(mouseY));
       break;
     case FLOOD_TRANS:
       makeFloodTransImage(tranlatePositionX(mouseX), tranlatePositionY(mouseY));
@@ -47,14 +47,6 @@ void mouseReleased() {
   }
 }
 
-int tranlatePositionX(int originX) {
-  return int((originX-(WORK_WIDTH-graphics.width*SCALE)*0.5) / SCALE);
-}
-
-int tranlatePositionY(int originY) {
-  return int((originY-(WORK_HEIGHT-graphics.height*SCALE)*0.5) / SCALE);
-}
-
 void mouseMoved() {
   if (mouseX > WORK_WIDTH && pmouseX <= WORK_WIDTH) cursor(ARROW);
   else if (mouseX < WORK_WIDTH && pmouseX >= WORK_WIDTH) {
@@ -79,6 +71,8 @@ void mouseMoved() {
 }
 
 void mouseEntered() {
+  mouseEntered = true;
+
   if (mouseX > WORK_WIDTH) {
     cursor(ARROW);
     return;
@@ -100,4 +94,8 @@ void mouseEntered() {
     cursor(ARROW);
     break;
   }
+}
+
+void mouseExited() {
+  mouseEntered = false;
 }

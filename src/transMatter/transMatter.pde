@@ -8,11 +8,11 @@ void setup() {
   rectMode(CORNER);
   imageMode(CENTER);
 
-  // setup graphics, history and buttons
+  // setup graphics, history and buttons and so on
   graphics = null;
   history = new History(graphics);
   button_settings();
-  dropTaret_settings();
+  dropTarget = new DropTarget(((java.awt.Component) this.surface.getNative()), new ImageDropTargetListener());
   bucket_icon  = loadImage( "bucket.png");
   syringe_icon = loadImage("syringe.png");
 }
@@ -21,6 +21,25 @@ void draw() {
   draw_img();
   for (Button button : buttons.values()) {
     button.draw();
+  }
+
+
+  // file Dragged
+  if (fileDragged) {
+    dragAlpha = min(120, dragAlpha+30);
+  } else {
+    dragAlpha = max(0, dragAlpha-30);
+  }
+  fill(0, 0, 0, dragAlpha);
+  rect(0, 0, width, height);
+  if (fileDragged) {
+    textSize(50);
+    fill(100);
+    float textWidth = textWidth("ファイルを開く")*1.1f;
+    rect((width-textWidth)*0.5, (height-textAscent()*1.275f)*0.5, textWidth, g.textLeading, 250);
+    fill(-1);
+    text("ファイルを開く", width*0.5, height*0.5);
+    return;
   }
 
   if (mouseX > WORK_WIDTH) return;
