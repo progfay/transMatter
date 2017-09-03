@@ -20,13 +20,14 @@ class Button {
   }
 
   boolean bounds() {
-    return (available && this.posX <= mouseX && mouseX <= this.posX + this.width && 
-      this.posY <= mouseY && mouseY <= this.posY + this.height);
+    return (available && mouseEntered
+      && this.posX <= mouseX && mouseX <= this.posX + this.width
+      && this.posY <= mouseY && mouseY <= this.posY + this.height);
   }
 
   void draw() {
     stroke(0);
-    fill(this.bounds() ? #B4B4B4 : #F4F5F7);
+    fill(this.bounds() ? #B4B4B4 : #FFFFFF);
     rect(this.posX, this.posY, this.width, this. height);
     fill(#000000);
     textSize(this.textSize);

@@ -1,6 +1,7 @@
 // transparent method
-void makeTransparencyImage(color target) {
-  if(target == 0) return;
+void makeTransparencyImage(int x, int y) {
+  color target = graphics.get(x, y);
+  if (target == 0) return;
   g.beginDraw();
   for (int i = 0; i < graphics.width; i++) {
     for (int j = 0; j < graphics.height; j++) {

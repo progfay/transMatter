@@ -13,28 +13,28 @@ void draw_img() {
     }
   }
   if (graphics == null || graphics.width == 0 || graphics.height == 0) return;
-  image(graphics, WORK_WIDTH/2, WORK_HEIGHT/2, graphics.width*SCALE, graphics.height*SCALE);
+  image(graphics, WORK_WIDTH/2, WORK_HEIGHT/2, graphics.width*scale, graphics.height*scale);
   noFill();
   stroke(0);
-  rect(WORK_WIDTH*0.5-graphics.width*0.5*SCALE, WORK_HEIGHT*0.5-graphics.height*0.5*SCALE, graphics.width*SCALE, graphics.height*SCALE);
+  rect(WORK_WIDTH*0.5-graphics.width*0.5*scale, WORK_HEIGHT*0.5-graphics.height*0.5*scale, graphics.width*scale, graphics.height*scale);
 }
 
 // return the mouse cursor on the image
 boolean on_img(int x, int y) {
-  return WORK_WIDTH*0.5-graphics.width*0.5*SCALE < x
-    && x < WORK_WIDTH*0.5+graphics.width*0.5*SCALE
-    && WORK_HEIGHT*0.5-graphics.height*0.5*SCALE < y
-    && y < WORK_HEIGHT*0.5+graphics.height*0.5*SCALE;
+  return WORK_WIDTH*0.5-graphics.width*0.5*scale < x
+    && x < WORK_WIDTH*0.5+graphics.width*0.5*scale
+    && WORK_HEIGHT*0.5-graphics.height*0.5*scale < y
+    && y < WORK_HEIGHT*0.5+graphics.height*0.5*scale;
 }
 
 void setScale() {
-  if(graphics == null || graphics.width == 0 || graphics.height == 0) return;
-      if (graphics.width > WORK_WIDTH) {
-        SCALE = WORK_WIDTH / graphics.width;
-        if (graphics.height > WORK_HEIGHT) SCALE = min(SCALE, WORK_HEIGHT / graphics.height);
-      } else if (graphics.width < WORK_WIDTH*0.5) {
-        SCALE = WORK_WIDTH/2 / graphics.width;
-        if (graphics.height < WORK_HEIGHT*0.5) SCALE = (WORK_HEIGHT*0.5) / graphics.height;
-      }
-      if (graphics.height > WORK_HEIGHT || graphics.height < WORK_HEIGHT*0.5) SCALE = (WORK_HEIGHT*0.5) / graphics.height;
+  if (graphics == null || graphics.width == 0 || graphics.height == 0) return;
+  if (graphics.width > WORK_WIDTH) {
+    scale = WORK_WIDTH / graphics.width;
+    if (graphics.height > WORK_HEIGHT) scale = min(scale, WORK_HEIGHT / graphics.height);
+  } else if (graphics.width < WORK_WIDTH*0.5) {
+    scale = WORK_WIDTH/2 / graphics.width;
+    if (graphics.height < WORK_HEIGHT*0.5) scale = (WORK_HEIGHT*0.5) / graphics.height;
+  }
+  if (graphics.height > WORK_HEIGHT || graphics.height < WORK_HEIGHT*0.5) scale = (WORK_HEIGHT*0.5) / graphics.height;
 }
