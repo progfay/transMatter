@@ -2,4 +2,4 @@
 
 透過画像を制作するための、画像編集ツール
 
-![tool](image/tool.png)
+![tool](image/transMatter.png)

@@ -26,7 +26,7 @@ class Button {
 
   void draw() {
     stroke(0);
-    fill(this.bounds() ? #B4B4B4 : #F4F5F7);
+    fill(this.bounds() ? #B4B4B4 : #FFFFFF);
     rect(this.posX, this.posY, this.width, this. height);
     fill(#000000);
     textSize(this.textSize);
