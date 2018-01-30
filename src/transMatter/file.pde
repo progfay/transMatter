@@ -1,5 +1,4 @@
 // load and save file methods
-
 void imgOpen(File selection) {
   if (selection == null) return;
   imgOpen(selection.getAbsolutePath());

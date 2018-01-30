@@ -1,3 +1,7 @@
+/*
+ enhancement : implement more function(ex. image cutting, zoom , move, bruch weight change, masking and so on)
+ */
+
 void settings() {
   size(WORK_WIDTH+UI_WIDTH, WORK_HEIGHT);
 }
@@ -22,6 +26,7 @@ void setup() {
 }
 
 void draw() {
+  println(graphics);
   draw_img();
   for (Button button : buttons.values()) {
     button.draw();
@@ -57,8 +62,8 @@ void draw() {
     break;
   case RECTANGLE:
     if (!mousePressed) return;
-    noFill();
-    stroke(0);
+    fill(#000000, 30);
+    stroke(#FFFFFF);
     rect(rectStartX, rectStartY, mouseX - rectStartX, mouseY - rectStartY);
   }
 }

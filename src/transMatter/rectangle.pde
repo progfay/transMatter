@@ -1,4 +1,7 @@
 void rectangleTransImage(int _x1, int _y1, int _x2, int _y2) {
+  if ((_x1 < 0 && _x2 < 0) || (_x1 > graphics.width  && _x2 > graphics.width))  return;
+  if ((_y1 < 0 && _y2 < 0) || (_y1 > graphics.height && _y2 > graphics.height)) return;
+
   int x1 = constrain(min(_x1, _x2), 0, graphics.width);
   int x2 = constrain(max(_x1, _x2), 0, graphics.width);
   int y1 = constrain(min(_y1, _y2), 0, graphics.height);
@@ -15,5 +18,5 @@ void rectangleTransImage(int _x1, int _y1, int _x2, int _y2) {
     }
   }
   graphics.endDraw();
-  if(isTransed) history.save();
+  if (isTransed) history.save();
 }
